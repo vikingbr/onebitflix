@@ -1,0 +1,25 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 5432
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  host: localhost
+  database: onebitflix_development
+
+
+test:
+  <<: *default
+  host: localhost
+  database: onebitflix_test
+
+production:
+  <<: *default
+  database: onebitflix_production
+  username: onebitflix
+  password: <%= ENV['ONEBITFLIX_DATABASE_PASSWORD'] %>
